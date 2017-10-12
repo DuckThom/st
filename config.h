@@ -5,8 +5,9 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-char font[] = "Droid Sans Mono:pixelsize=12:antialias=true:autohint=true";
-int borderpx = 10;
+char font[] = "Fira Mono for Powerline:pixelsize=13:antialias=true:autohint=true";
+int borderpx = 0;
+#define histsize 5000
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -24,7 +25,7 @@ char stty_args[] = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 char vtiden[] = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
-float cwscale = 1.0;
+float cwscale = 1.1;
 float chscale = 1.0;
 
 /*
@@ -42,8 +43,8 @@ unsigned int tripleclicktimeout = 400;
 int allowaltscreen = 1;
 
 /* frames per second st should at maximum draw to the screen */
-unsigned int xfps = 144;
-unsigned int actionfps = 144;
+unsigned int xfps = 60;
+unsigned int actionfps = 60;
 
 /*
  * blinking timeout (set to 0 to disable blinking) for the terminal blinking
@@ -63,7 +64,10 @@ unsigned int cursorthickness = 2;
 int bellvolume = 0;
 
 /* default TERM value */
-char termname[] = "st-256color";
+char termname[] = "xterm-256color";
+
+// Not going to use this for now, seems to break vim...
+//char termname[] = "st-256color";
 
 /*
  * spaces per tab
@@ -88,14 +92,14 @@ int alpha = 0xeb;
 /* Terminal colors (16 first used in escape sequence) */
 const char *colorname[] = {
 	/* 8 normal colors */
-	"#101010",
-	"#e84f4f",
-	"#b8d68c",
-	"#e1aa5d",
-	"#7dc1cf",
-	"#9b64fb",
-	"#6d878d",
-	"#dfdfdf",
+	"#101010", // Black
+	"#e84f4f", // Red
+	"#93AB65", // Yellow
+	"#BA8D4D", // Orange
+	"#7dc1cf", // Blue
+	"#9b64fb", // Magenta
+	"#6d878d", // Cyan
+	"#dfdfdf", // White
 
 	/* 8 bright colors */
 	"#404040",
@@ -163,10 +167,12 @@ MouseKey mkeys[] = {
 	{ Button5,              XK_NO_MOD,      kscrolldown,    {.i =  3} },
 	{ Button4,              ShiftMask,      kscrollup,      {.i =  1} },
 	{ Button5,              ShiftMask,      kscrolldown,    {.i =  1} },
+    //{ Button1,              ControlMask,    externalpipe,   { .v = "xurls | tac | dmenu -p open | xargs -r xdg-open" } },
 };
 
 /* Internal keyboard shortcuts. */
 #define MODMASK ControlMask|Mod1Mask
+#define CSMASK ControlMask|ShiftMask
 
 Shortcut shortcuts[] = {
 	/* mask,       keysym,            function,       argument */
@@ -174,14 +180,14 @@ Shortcut shortcuts[] = {
 	{ MODMASK,     XK_equal,          zoom,          {.f = +1} },
 	{ MODMASK,     XK_Home,           zoomreset,     {.f =  0} },
 	{ ShiftMask,   XK_Insert,         selpaste,       {.i =  0} },
-	{ MODMASK,     XK_C,              clipcopy,       {.i =  0} },
-	{ MODMASK,     XK_V,              clippaste,      {.i =  0} },
+	{ CSMASK,      XK_C,              clipcopy,       {.i =  0} },
+	{ CSMASK,      XK_V,              clippaste,      {.i =  0} },
 	{ Mod1Mask,    XK_Control_L,      iso14755,       {.i =  0} },
 	{ MODMASK,     XK_bracketright,   kscrollup,      {.i = -1} },
 	{ MODMASK,     XK_bracketleft,    kscrolldown,    {.i = -1} },
 	{ ShiftMask,   XK_Page_Up,        kscrollup,      {.i = -1} },
 	{ ShiftMask,   XK_Page_Down,      kscrolldown,    {.i = -1} },
-	{ MODMASK,     XK_f,              externalpipe,   { .v = "xurls | tac | dmenu -p open | xargs -r xdg-open" } },
+    { MODMASK,     XK_f,              externalpipe,   { .v = "xurls | tac | dmenu -p open | xargs -r xdg-open" } },
 };
 
 /*
