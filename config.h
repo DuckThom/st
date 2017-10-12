@@ -92,24 +92,24 @@ int alpha = 0xeb;
 /* Terminal colors (16 first used in escape sequence) */
 const char *colorname[] = {
 	/* 8 normal colors */
-	"#101010", // Black
-	"#e84f4f", // Red
-	"#93AB65", // Yellow
-	"#BA8D4D", // Orange
-	"#7dc1cf", // Blue
-	"#9b64fb", // Magenta
-	"#6d878d", // Cyan
-	"#dfdfdf", // White
+	"#073642", // Black
+	"#DC322F", // Red
+	"#859900", // Yellow
+	"#B58900", // Orange
+	"#268BD2", // Blue
+	"#D33682", // Magenta
+	"#2AA198", // Cyan
+	"#EEE8D5", // White
 
 	/* 8 bright colors */
-	"#404040",
-	"#d23d3d",
-	"#a0cf5d",
-	"#f39d21",
-	"#4e9fb1",
-	"#8542ff",
-	"#42717b",
-	"#ffffff",
+	"#002B36",
+	"#CB4B16",
+	"#586E75",
+	"#657B83",
+	"#839496",
+	"#6C71C4",
+	"#93A1A1",
+	"#FDF6E3",
 
 	[255] = 0,
 
