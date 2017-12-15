@@ -1804,7 +1804,7 @@ run(void)
 int
 main(int argc, char *argv[])
 {
-    int cols, rows;
+    //int cols, rows;
 
 	xw.l = xw.t = 0;
 	xw.isfixed = False;

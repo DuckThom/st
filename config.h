@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-char font[] = "Fira Mono for Powerline:pixelsize=13:antialias=true:autohint=true";
+char font[] = "Hack:pixelsize=14:antialias=true:autohint=true";
 int borderpx = 0;
 #define histsize 5000
 
@@ -137,6 +137,9 @@ unsigned int defaultrcs = 258;
  * 7: Snowman ("☃")
  */
 unsigned int cursorshape = 2;
+
+unsigned int cols = 120;
+unsigned int rows = 50;
 
 /*
  * Default colour and shape of the mouse cursor
